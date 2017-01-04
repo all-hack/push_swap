@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   overlap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: obelange <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/30 14:47:56 by obelange          #+#    #+#             */
-/*   Updated: 2016/09/30 14:47:56 by obelange         ###   ########.fr       */
+/*   Created: 2016/12/29 06:03:35 by obelange          #+#    #+#             */
+/*   Updated: 2016/12/29 06:03:38 by obelange         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "push_swap.h"
 
-int	*ft_bzero(void *s, size_t n)
+void ft_ps_error(int k, char *err)
 {
-	size_t i;
-
-	i = 0;
-	while (i < n)
-		((int*)s)[i++] = 0;
-	return (s);
+	if (k < 1)
+	{
+		write(2, err, ft_strlen(err));
+		exit(1);
+	}
 }

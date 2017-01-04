@@ -13,3 +13,30 @@
 #include "libft.h"
 #include "push_swap.h"
 
+
+t_result	*ft_pushswap_algo_control(t_stacks *st)
+{
+	t_result	*rt;
+	t_algo		*at;
+	int			i;
+	int			algo_index;
+
+	rt = ft_init_t_result(st->asize);
+	at = ft_init_t_algo();
+	i = 0;
+	while (at->algo_condition[i])
+	{
+		algo_index = at->algo_condition[i++](st, rt, at->algo_op_end);
+		if (at->algo_op[algo_index])			
+			rt->op_list = ft_check_op_count(at->algo_op[algo_index](st, rt), &(rt->op_count));
+	}
+	if (!rt->op_list)
+		rt->op_list = ft_check_op_count(at->algo_op[0](st, rt), &(rt->op_count));	
+	ft_clean_t_algo(&at);
+	return (rt);
+}
+
+
+
+
+

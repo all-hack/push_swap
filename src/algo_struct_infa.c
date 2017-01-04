@@ -13,3 +13,28 @@
 #include "libft.h"
 #include "push_swap.h"
 
+t_algo	*ft_init_t_algo()
+{
+	t_algo	*at;
+
+	if ((at = (t_algo*)malloc(sizeof(t_algo))) == 0)
+		ft_ps_error(0, "Malloc fail\n");
+	at->algo_op[0] = op_algo_0_bubble;
+	at->algo_names[0] = "bubble sort";
+	at->algo_op[1] = 0;
+	at->algo_condition[0] = op_condition_0_less4;
+	at->algo_condition[1] = 0;
+	at->algo_op_end = 1;
+	at->algo_condition_end = 2;
+
+	return (at);
+}
+
+void	ft_clean_t_algo(t_algo **at)
+{
+	if (at && *at)
+	{		
+		free((*at));
+		*at = NULL;
+	}
+}
