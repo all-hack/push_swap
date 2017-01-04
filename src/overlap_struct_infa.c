@@ -22,7 +22,7 @@ t_stacks	*ft_init_t_stacks(int	*arr, size_t asize)
 		if ((st = (t_stacks*)malloc(sizeof(t_stacks))) == 0)
 			ft_ps_error(0, "Malloc fail\n");
 		st->arr = arr;
-		st->brr = ft_bzero(ft_mallocint(asize), asize);
+		st->brr = ft_mallocint(asize);		
 		st->asize = asize;
 		st->bsize = 0;
 		return (st);

@@ -62,8 +62,8 @@ all : $(PUSHSWAP) $(CHECKER)
 $(PUSHSWAP) : build $(POBJ) libft.a
 	gcc $(FLAGS) -o $(PUSHSWAP) $(POBJ) $(LIB_COMP)
 
-$(CHECKER) : build $(CFILES) libft.a
-	gcc $(FLAGS) -o $(PUSHSWAP) $(COBJ) $(LIB_COMP)
+$(CHECKER) : build $(COBJ) libft.a
+	gcc $(FLAGS) -o $(CHECKER) $(COBJ) $(LIB_COMP)
 
 $(NAME) : build $(OBJ) libft.a
 	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIB_COMP)
@@ -92,7 +92,7 @@ clean :
 	@$(MAKE) -C $(LIBFT_PATH) clean
 
 fclean : clean
-	@rm -f $(PUSHSWAP)
+	@rm -f $(PUSHSWAP) $(CHECKER)
 	@$(MAKE) -C $(LIBFT_PATH) fclean
 
 re : fclean all

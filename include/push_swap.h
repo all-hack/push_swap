@@ -15,6 +15,8 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <fcntl.h>
+# define BUFFSIZE 1024
 
 typedef struct	s_result
 {
@@ -62,15 +64,15 @@ void	ft_rotate2(int	*arr, int	*brr, size_t asize, size_t bsize);
 void	ft_revrotate1(int	*array, size_t size);
 void	ft_revrotate2(int	*arr, int	*brr, size_t asize, size_t bsize);
 
-char	*ft_sa(int	*arr, size_t size);
-char	*ft_sb(int	*brr, size_t size);
+char	*ft_sa(int	*arr, int *brr, size_t asize, size_t bsize);
+char	*ft_sb(int	*arr, int *brr, size_t asize, size_t bsize);
 char	*ft_ss(int	*arr, int *brr, size_t asize, size_t bsize);
 char	*ft_pa(int	*arr, int *brr, size_t *asize, size_t *bsize);
 char	*ft_pb(int	*arr, int *brr, size_t *asize, size_t *bsize);
-char	*ft_ra(int	*arr, size_t size);
-char	*ft_rb(int	*brr, size_t size);
-char	*ft_rra(int	*arr, size_t size);
-char	*ft_rrb(int	*brr, size_t size);
+char	*ft_ra(int	*arr, int *brr, size_t asize, size_t bsize);
+char	*ft_rb(int	*arr, int *brr, size_t asize, size_t bsize);
+char	*ft_rra(int	*arr, int *brr, size_t asize, size_t bsize);
+char	*ft_rrb(int	*arr, int *brr, size_t asize, size_t bsize);
 char	*ft_rr(int	*arr, int *brr, size_t asize, size_t bsize);
 char	*ft_rrr(int	*arr, int *brr, size_t asize, size_t bsize);
 
@@ -95,6 +97,7 @@ char		*op_algo_0_bubble(t_stacks *st, t_result *rt);
 
 int			op_condition_0_less4(t_stacks *st, t_result *rt, int algo_op_end);
 
+char		*ft_read_stdin();
 char		**ft_read_cli_args(int argc, char **argv);
 int			*ft_intcpy(int	*dst, int *src, size_t n);
 int			ft_arr_sorted(int *arr, size_t size);
@@ -104,7 +107,7 @@ int			ft_arr_sorted(int *arr, size_t size);
 
 int 	zyc;
 # 	define LIST(STR, ST, ARR, SIZE) zyc = 0; printf("\n"); while (ST && zyc < SIZE) {printf(STR, zyc, ARR[zyc++]);}
-
+# 	define LIST0(STR, ST, ARR) zyc = 0; printf("\n"); while (ST && ARR[zyc]) {printf(STR, zyc, ARR[zyc++]);}
 
 
 

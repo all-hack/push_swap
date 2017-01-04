@@ -85,7 +85,9 @@ char			**ft_strsplit(char *s, char c)
 
 	if (s)
 	{
+		// printf("s: %s\n", s);
 		s = ft_strtrim_c(s, c);
+		// printf("s: %s\n", s);
 		x = s;
 		index = 0;
 		nstr = form_charcharchar(s, c, &size);		

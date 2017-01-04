@@ -25,3 +25,19 @@ char	**ft_read_cli_args(int argc, char **argv)
 		exit(0);
 	return (argv);
 }
+
+char	*ft_read_stdin()
+{	
+	char	buff[BUFFSIZE];
+	int		rec;
+	char	*op_list;
+
+	op_list = NULL;
+	ft_bzero(buff, BUFFSIZE);
+	while ((read(0, buff, BUFFSIZE) > 0))
+	{		
+		op_list = ft_fstrmcat(op_list, buff);
+		ft_bzero(buff, BUFFSIZE);
+	}	
+	return (op_list);
+}

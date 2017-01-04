@@ -13,15 +13,15 @@
 #include "libft.h"
 #include "push_swap.h"
 
-char	*ft_sa(int	*arr, size_t size)
+char	*ft_sa(int	*arr, int *brr, size_t asize, size_t bsize)
 {
-	ft_swap1(arr, size);
+	ft_swap1(arr, asize);
 	return ("sa\n");
 }
 
-char	*ft_sb(int	*brr, size_t size)
+char	*ft_sb(int	*arr, int *brr, size_t asize, size_t bsize)
 {
-	ft_swap1(brr, size);
+	ft_swap1(brr, bsize);
 	return ("sb\n");
 }
 
@@ -44,27 +44,27 @@ char	*ft_pb(int	*arr, int *brr, size_t *asize, size_t *bsize)
 }
 
 
-char	*ft_ra(int	*arr, size_t size)
+char	*ft_ra(int	*arr, int *brr, size_t asize, size_t bsize)
 {
-	ft_rotate1(arr, size);
+	ft_rotate1(arr, asize);
 	return ("ra\n");
 }
 
-char	*ft_rb(int	*brr, size_t size)
+char	*ft_rb(int	*arr, int *brr, size_t asize, size_t bsize)
 {
-	ft_rotate1(brr, size);
+	ft_rotate1(brr, bsize);
 	return ("rb\n");
 }
 
-char	*ft_rra(int	*arr, size_t size)
+char	*ft_rra(int	*arr, int *brr, size_t asize, size_t bsize)
 {
-	ft_revrotate1(arr, size);
+	ft_revrotate1(arr, asize);
 	return ("rra\n");
 }
 
-char	*ft_rrb(int	*brr, size_t size)
+char	*ft_rrb(int	*arr, int *brr, size_t asize, size_t bsize)
 {
-	ft_revrotate1(brr, size);
+	ft_revrotate1(brr, bsize);
 	return ("rrb\n");
 }
 

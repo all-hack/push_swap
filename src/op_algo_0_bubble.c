@@ -42,7 +42,7 @@ char	*op_algo_0_bubble(t_stacks *st, t_result *rt)
 			// printf("rotating\n");
 			while (min != st->arr[0])
 			{				
-				op_list = ft_fstrmcat(op_list, ft_ra(st->arr, st->asize));
+				op_list = ft_fstrmcat(op_list, ft_ra(st->arr, 0, st->asize, 0));
 				// printf("min: %d, st->arr[0]: %d, st->asize: %d,\n", min, st->arr[0], st->asize);
 			}
 			// printf("pushing st->arr[0]: %d\n", st->arr[0]);

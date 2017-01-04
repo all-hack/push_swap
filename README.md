@@ -45,10 +45,6 @@
 		* `int	algo_condition_size`
 			* corresponds the size of the `algo_condition` function array including terminating 0
 
-* helper_cli.c
-	* `char	**ft_read_cli_args(int argc, char **argv)`
-		* validates and handles the command line arguments passed to the program
-
 * overlap_allocation.c
 	* `int *ft_mallocint(size_t size)`
 		* mallocate `size` + 1 memory to an `int` array and bzero it. the extra space is for a terminating 0 which is used for how i implemented the push_swap operations.
@@ -126,6 +122,12 @@
 		* copies `n` `int`'s from `src` into pre-allocated `dst`
 	* `int	ft_arr_sorted(int *arr, size_t size)`
 		* checks to see if `arr` is sorted in ascending order
+
+* helper_cli.c
+	* `char	**ft_read_cli_args(int argc, char **argv)`
+		* validates and handles the command line arguments passed to the program
+	* `char	*ft_read_stdin()`
+		* reads from the standard input and returns the operations
 
 * op_conditions_set_0.c
 	* `int	op_condition_0_less4(t_stacks *st, t_result *rt, int algo_op_end)`

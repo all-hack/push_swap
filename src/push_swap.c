@@ -41,6 +41,8 @@ int main(int argc, char **argv)
 
 	ft_putstr(rt->op_list);
 	
+	// LIST("st->arr[%ld]: %d\n", st, st->arr, st->asize)
+
 	ft_clean_t_stacks(&st);
 	ft_clean_t_result(&rt);
 	// printf("st->asize: %zd\n", asize);
@@ -53,7 +55,7 @@ int main(int argc, char **argv)
 	// printf("rt: %p\n", rt);	
 	// printf("rt->true_size: %ld\n", rt->true_size);
 	
-	// LIST("st->arr[%ld]: %d\n", st, st->arr, st->asize)
+	
 
 	// printf("\nop_list: \n%s\n\n", rt->op_list);
 	// printf("\nop_count: %ld\n\n", rt->op_count);

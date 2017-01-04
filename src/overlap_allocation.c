@@ -19,7 +19,10 @@ int *ft_mallocint(size_t size)
 	int	*arr;
 
 	if ((arr = (int*)malloc(sizeof(int) * size + 1)))		
-		return (ft_bzero(arr, size + 1));
+	{
+		ft_bzero(arr, (size + 1) * sizeof(int));		
+		return (arr);
+	}
 	else
 		ft_ps_error(0, "Malloc fail\n");
 	return (0);
