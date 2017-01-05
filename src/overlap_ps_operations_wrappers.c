@@ -13,21 +13,22 @@
 #include "libft.h"
 #include "push_swap.h"
 
-char	*ft_sa(int	*arr, int *brr, size_t asize, size_t bsize)
+char	*ft_sa(int	*arr, int *brr, size_t *asize, size_t *bsize)
 {
-	ft_swap1(arr, asize);
+	printf("afjadfohoih\n");
+	ft_swap1(arr, *asize);
 	return ("sa\n");
 }
 
-char	*ft_sb(int	*arr, int *brr, size_t asize, size_t bsize)
+char	*ft_sb(int	*arr, int *brr, size_t *asize, size_t *bsize)
 {
-	ft_swap1(brr, bsize);
+	ft_swap1(brr, *bsize);
 	return ("sb\n");
 }
 
-char	*ft_ss(int	*arr, int *brr, size_t asize, size_t bsize)
+char	*ft_ss(int	*arr, int *brr, size_t *asize, size_t *bsize)
 {
-	ft_swap2(arr, brr, asize, bsize);
+	ft_swap2(arr, brr, *asize, *bsize);
 	return ("ss\n");
 }
 
@@ -44,39 +45,39 @@ char	*ft_pb(int	*arr, int *brr, size_t *asize, size_t *bsize)
 }
 
 
-char	*ft_ra(int	*arr, int *brr, size_t asize, size_t bsize)
+char	*ft_ra(int	*arr, int *brr, size_t *asize, size_t *bsize)
 {
-	ft_rotate1(arr, asize);
+	ft_rotate1(arr, *asize);
 	return ("ra\n");
 }
 
-char	*ft_rb(int	*arr, int *brr, size_t asize, size_t bsize)
+char	*ft_rb(int	*arr, int *brr, size_t *asize, size_t *bsize)
 {
-	ft_rotate1(brr, bsize);
+	ft_rotate1(brr, *bsize);
 	return ("rb\n");
 }
 
-char	*ft_rra(int	*arr, int *brr, size_t asize, size_t bsize)
+char	*ft_rra(int	*arr, int *brr, size_t *asize, size_t *bsize)
 {
-	ft_revrotate1(arr, asize);
+	ft_revrotate1(arr, *asize);
 	return ("rra\n");
 }
 
-char	*ft_rrb(int	*arr, int *brr, size_t asize, size_t bsize)
+char	*ft_rrb(int	*arr, int *brr, size_t *asize, size_t *bsize)
 {
-	ft_revrotate1(brr, bsize);
+	ft_revrotate1(brr, *bsize);
 	return ("rrb\n");
 }
 
-char	*ft_rr(int	*arr, int *brr, size_t asize, size_t bsize)
+char	*ft_rr(int	*arr, int *brr, size_t *asize, size_t *bsize)
 {
-	ft_rotate2(arr, brr, asize, bsize);
+	ft_rotate2(arr, brr, *asize, *bsize);
 	return ("rr\n");
 }
 
-char	*ft_rrr(int	*arr, int *brr, size_t asize, size_t bsize)
+char	*ft_rrr(int	*arr, int *brr, size_t *asize, size_t *bsize)
 {
-	ft_revrotate2(arr, brr, asize, bsize);
+	ft_revrotate2(arr, brr, *asize, *bsize);
 	return ("rrr\n");
 }
 

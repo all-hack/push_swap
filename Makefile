@@ -65,17 +65,17 @@ $(PUSHSWAP) : build $(POBJ) libft.a
 $(CHECKER) : build $(COBJ) libft.a
 	gcc $(FLAGS) -o $(CHECKER) $(COBJ) $(LIB_COMP)
 
-$(NAME) : build $(OBJ) libft.a
-	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIB_COMP)
-
-run : fclean build $(OBJ) libft.a
-	@gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIB_COMP)
-
 dev : fclean build $(OBJ) libft.a
 	gcc $(DEVF) -o $(NAME) $(OBJ) $(LIB_COMP)
 
-leak : fclean build $(OBJ) libft.a
-	gcc $(LEAKF) -o $(NAME) $(OBJ) $(LIB_COMP)
+leak : fclean build libft.a leakp leakc
+	@echo "\n\nalloc wrap is turned on\n\n"
+
+leakp : $(POBJ)
+	gcc $(LEAKF) -o $(PUSHSWAP) $(POBJ) $(LIB_COMP)
+
+leakc : $(COBJ)
+	gcc $(LEAKF) -o $(CHECKER) $(COBJ) $(LIB_COMP)
 
 libft.a : 
 	@echo "compiling library...."

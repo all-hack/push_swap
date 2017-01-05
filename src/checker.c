@@ -28,7 +28,7 @@
 // ft_rrb
 // ft_rrr
 
-int	ft_str_search_tokens(char const *s, char **c, size_t *index)
+int	ft_str_search_tokens(char const *s, char **c, size_t *endex)
 {
 	size_t	i;
 	size_t	j;
@@ -36,65 +36,33 @@ int	ft_str_search_tokens(char const *s, char **c, size_t *index)
 	if (s && c && *c)
 	{		
 		// printf("s: %s\n", s);
-		// printf("s: %d\n", s[3]);
-
+		// printf("s: %d\n", s[0]);		
 		j = -1;
-		while (c[++j])
-		{
-			// printf("adfhoafh\n");
-			if (ft_strcmp(s, c[j]) == 0)
+		while (c[++j] && *endex > 0)
+		{			
+			if (ft_strncmp(s, c[j], *endex) == 0)
 			{
 				// printf("c[%d]: %s\n", j, c[j]);
-				*index = j;
+				*endex = j;
 				return (1);
 			}
-		}
+		}		
 		return (0);
 	}	
 	return (-1);
 }
 
-void	init_op_instruction(char	**(*op_instruction))
+// void	init_op_instruction(char	*(**op_instruction))
+// {
+// 	// char	*(*algo_condition[11]) (int	*arr, int *brr, size_t asize, size_t bsize);
+// }
+
+// void	validate_op_list(char *op_list, char **tokens,t_stacks *st, char	*(**op_instruction)(int	*arr, int *brr, size_t *asize, size_t *bsize))
+void	validate_op_list(char *op_list, char **tokens,t_stacks *st)
 {
-	// char	*(*algo_condition[11]) (int	*arr, int *brr, size_t asize, size_t bsize);
-
-
-	
-}
-
-void	validate_op_list(char *op_list, char **tokens, char delim, char	*(*op_instruction))
-{
-	// char **split_op;	
-	// split_op = ft_strsplit(op_list, delim);
-	size_t	end;	
-	// size_t	start;	
-
-	// start = 0;	
-	printf("function: %p\n", op_instruction);	
-
-	while (ft_strchri(op_list, '\n', &end))
-	{
-		if (ft_str_search_tokens(op_list, tokens, &end))
-			printf("end: %ld\n", end);		
-	}
-
-
-	// int i = 0;
-	// while (split_op[i])
-	// 	printf("split_op: %s\n", split_op[i++]);
-	
-	// LIST0("split_op[%d]: %s\n", split_op, split_op)
-
-
-
-}
-
-
-
-void	init_op_tokens(char *op_list)
-{
-	char *tokens[12];
-	char	*(*op_instruction[11])(int	*arr, int *brr, size_t asize, size_t bsize);
+	size_t	endex;
+	size_t	increment;
+	char	*(*op_instruction[11])(int	*arr, int *brr, size_t *asize, size_t *bsize);
 
 	op_instruction[0] = ft_sa;
 	op_instruction[1] = ft_sb;
@@ -106,8 +74,24 @@ void	init_op_tokens(char *op_list)
 	op_instruction[7] = ft_rr;
 	op_instruction[8] = ft_rra;
 	op_instruction[9] = ft_rrb;
-	op_instruction[10] = ft_rrr;
+	op_instruction[10] = ft_rrr;	
+	while (ft_strchri(op_list, '\n', &endex))
+	{
+		increment = endex;
+		if (ft_str_search_tokens(op_list, tokens, &endex))
+			(*op_instruction[endex])(st->arr, st->brr, &st->asize, &st->bsize);
+		else
+			ft_ps_error(0, "Error\n");
+		op_list = op_list + increment + 1;
+	}
+}
 
+
+
+void	check_and_exec_op(char *op_list, t_stacks *st)
+{
+	char *tokens[12];
+	
 	tokens[0] = "sa\n";
 	tokens[1] = "sb\n";
 	tokens[2] = "ss\n";
@@ -120,43 +104,39 @@ void	init_op_tokens(char *op_list)
 	tokens[9] = "rrb\n";
 	tokens[10] = "rrr\n";
 	tokens[11] = 0;
-
-	// op_instruction = NULL;
-	validate_op_list(op_list, tokens, '\n', op_instruction);
+	validate_op_list(op_list, tokens, st);
 }
 
 
 int main(int argc, char **argv)
 {
 	size_t	asize;
-	// size_t	bsize;
-	// int		*arr;
-	// int		*brr;
-	size_t	i;
-	size_t	j;
+	size_t	true_size;
 	t_stacks	*st;
-	t_result	*rt;
-	char	*op_list;	
+	char	*op_list;
 
-	i = 0;
-	j = 0;
-	
 	// while (argv[j])
-	// 	printf("argd: %s\n", argv[j++]);
+	// 	printf("argd: %s\n", argv[j++]);s
+	if ((argv = ft_read_cli_args(argc, argv)) == NULL)
+		ft_ps_error(0, "Error\n");
+
+	st = ft_init_t_stacks(ft_cli_arguments_array(argv, &asize), asize);
+	ft_ps_error(ft_check_duplicate_int(st->arr, st->asize), "Error\n");
+
+	// LIST("0st->arr[%ld]: %d\n", st, st->arr, st->asize)
+	true_size = st->asize;
+	if (!ft_arr_sorted(st->arr, st->asize))
+	{
+		op_list = ft_read_stdin();
+		check_and_exec_op(op_list, st);	
+		if (ft_arr_sorted(st->arr, true_size) && st->asize == true_size)
+			ft_putstr("OK\n");
+		else
+			ft_putstr("KO\n");
+	}
 	
 
-
-	// if ((argv = ft_read_cli_args(argc, argv)) == NULL)
-	// 	ft_ps_error(0, "Error\n");
-
-	// st = ft_init_t_stacks(ft_cli_arguments_array(argv, &asize), asize);
-	// ft_ps_error(ft_check_duplicate_int(st->arr, st->asize), "Error\n");
-
-
-
-	op_list = ft_read_stdin();
-	init_op_tokens(op_list);
-
+	// LIST("1st->arr[%ld]: %d\n", st, st->arr, st->asize)
 
 	// printf("st->asize: %zd\n", asize);
 	// arr = ft_cli_arguments_array(argv, &asize);
@@ -168,7 +148,7 @@ int main(int argc, char **argv)
 	// printf("rt: %p\n", rt);	
 	// printf("rt->true_size: %ld\n", rt->true_size);
 	
-	// LIST("st->arr[%ld]: %d\n", st, st->arr, st->asize)
+	
 
 	// printf("\nop_list: \n%s\n\n", rt->op_list);
 	// printf("\nop_count: %ld\n\n", rt->op_count);

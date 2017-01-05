@@ -64,17 +64,17 @@ void	ft_rotate2(int	*arr, int	*brr, size_t asize, size_t bsize);
 void	ft_revrotate1(int	*array, size_t size);
 void	ft_revrotate2(int	*arr, int	*brr, size_t asize, size_t bsize);
 
-char	*ft_sa(int	*arr, int *brr, size_t asize, size_t bsize);
-char	*ft_sb(int	*arr, int *brr, size_t asize, size_t bsize);
-char	*ft_ss(int	*arr, int *brr, size_t asize, size_t bsize);
+char	*ft_sa(int	*arr, int *brr, size_t *asize, size_t *bsize);
+char	*ft_sb(int	*arr, int *brr, size_t *asize, size_t *bsize);
+char	*ft_ss(int	*arr, int *brr, size_t *asize, size_t *bsize);
 char	*ft_pa(int	*arr, int *brr, size_t *asize, size_t *bsize);
 char	*ft_pb(int	*arr, int *brr, size_t *asize, size_t *bsize);
-char	*ft_ra(int	*arr, int *brr, size_t asize, size_t bsize);
-char	*ft_rb(int	*arr, int *brr, size_t asize, size_t bsize);
-char	*ft_rra(int	*arr, int *brr, size_t asize, size_t bsize);
-char	*ft_rrb(int	*arr, int *brr, size_t asize, size_t bsize);
-char	*ft_rr(int	*arr, int *brr, size_t asize, size_t bsize);
-char	*ft_rrr(int	*arr, int *brr, size_t asize, size_t bsize);
+char	*ft_ra(int	*arr, int *brr, size_t *asize, size_t *bsize);
+char	*ft_rb(int	*arr, int *brr, size_t *asize, size_t *bsize);
+char	*ft_rra(int	*arr, int *brr, size_t *asize, size_t *bsize);
+char	*ft_rrb(int	*arr, int *brr, size_t *asize, size_t *bsize);
+char	*ft_rr(int	*arr, int *brr, size_t *asize, size_t *bsize);
+char	*ft_rrr(int	*arr, int *brr, size_t *asize, size_t *bsize);
 
 t_result	*ft_init_t_result(size_t true_size);
 t_stacks	*ft_init_t_stacks(int	*arr, size_t asize);
