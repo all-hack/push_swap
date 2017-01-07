@@ -13,10 +13,10 @@
 #include "libft.h"
 #include "push_swap.h"
 
-int	ps_ssov_wrapper(char const *s, char const *c)
+int			ps_ssov_wrapper(char const *s, char const *c)
 {
 	if (s && c)
-	{		
+	{
 		if (s[0] == '-')
 			return (ft_strsearch_ov(++s, c));
 		else
@@ -25,14 +25,14 @@ int	ps_ssov_wrapper(char const *s, char const *c)
 	return (-1);
 }
 
-int	ft_check_valid_input(char **argv, char *valid_char)
+int			ft_check_valid_input(char **argv, char *valid_char)
 {
 	if (argv && *argv)
 	{
 		while (*argv)
 			if (ps_ssov_wrapper(*argv++, valid_char) == 0)
 				return (0);
-		return (1);		
+		return (1);
 	}
 	return (-1);
 }
@@ -40,7 +40,8 @@ int	ft_check_valid_input(char **argv, char *valid_char)
 /*
 ** a static helper function for ft_check duplicate_int
 */
-static	int	recursive_loop(int a, int *arr, size_t size)
+
+static int	recursive_loop(int a, int *arr, size_t size)
 {
 	size_t i;
 
@@ -55,7 +56,7 @@ static	int	recursive_loop(int a, int *arr, size_t size)
 	return (-1);
 }
 
-int ft_check_duplicate_int(int	*arr, size_t size)
+int			ft_check_duplicate_int(int *arr, size_t size)
 {
 	int	*i;
 
@@ -63,7 +64,7 @@ int ft_check_duplicate_int(int	*arr, size_t size)
 	{
 		i = arr + size - 1;
 		while (arr++ < i)
-		{			
+		{
 			if (recursive_loop(*(arr - 1), arr, --size))
 				return (0);
 		}

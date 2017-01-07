@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-t_algo	*ft_init_t_algo()
+t_algo	*ft_init_t_algo(void)
 {
 	t_algo	*at;
 
@@ -26,14 +26,13 @@ t_algo	*ft_init_t_algo()
 	at->algo_condition[1] = 0;
 	at->algo_op_end = 1;
 	at->algo_condition_end = 2;
-
 	return (at);
 }
 
 void	ft_clean_t_algo(t_algo **at)
 {
 	if (at && *at)
-	{		
+	{
 		free((*at));
 		*at = NULL;
 	}

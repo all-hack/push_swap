@@ -28,18 +28,12 @@ size_t	ft_count_operations(char *op_list)
 char	*ft_check_op_count(char *op_list, size_t *curr_count)
 {
 	size_t	op_count;
-	
-	op_count = ft_count_operations(op_list);
 
+	op_count = ft_count_operations(op_list);
 	if (op_count < *curr_count)
 	{
-		// printf("curr_count: %ld\n", *curr_count);
 		*curr_count = op_count;
-		// printf("curr_count: %ld\n", *curr_count);
-		// printf("op_list: \n%s\n", op_list);
-		// printf("op_list pointer: %p\n", op_list);
 		return (op_list);
 	}
-	// return (curr_list);
 	return (NULL);
 }

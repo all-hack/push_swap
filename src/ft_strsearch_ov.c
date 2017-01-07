@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-static int recursive_loop(char const s, char const *c)
+static int	recursive_loop(char const s, char const *c)
 {
 	if (c)
 	{
@@ -25,10 +25,10 @@ static int recursive_loop(char const s, char const *c)
 	return (-1);
 }
 
-int	ft_strsearch_ov(char const *s, char const *c)
+int			ft_strsearch_ov(char const *s, char const *c)
 {
 	if (s && c)
-	{	
+	{
 		if (recursive_loop(*s, c) == 0)
 			return (0);
 		while (*++s)

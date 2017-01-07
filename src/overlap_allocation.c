@@ -13,14 +13,13 @@
 #include "libft.h"
 #include "push_swap.h"
 
-
-int *ft_mallocint(size_t size)
+int	*ft_mallocint(size_t size)
 {
 	int	*arr;
 
-	if ((arr = (int*)malloc(sizeof(int) * size + 1)))		
+	if ((arr = (int*)malloc(sizeof(int) * size + 1)))
 	{
-		ft_bzero(arr, (size + 1) * sizeof(int));		
+		ft_bzero(arr, (size + 1) * sizeof(int));
 		return (arr);
 	}
 	else
@@ -28,7 +27,7 @@ int *ft_mallocint(size_t size)
 	return (0);
 }
 
-int ft_convert_char_int(char *str)
+int	ft_convert_char_int(char *str)
 {
 	intmax_t	tmp;
 	int			x;
@@ -48,21 +47,21 @@ int ft_convert_char_int(char *str)
 	return (0);
 }
 
-int *ft_cli_arguments_array(char **argv, size_t *size)
+int	*ft_cli_arguments_array(char **argv, size_t *size)
 {
 	intmax_t	i;
 	int			*arr;
-	
+
 	if (argv && size)
 	{
 		*size = 0;
-		while(argv[*size])
+		while (argv[*size])
 			(*size)++;
 		NULL_GUARD(arr = ft_mallocint(*size));
 		i = -1;
 		while (++i < *size)
 			arr[i] = ft_convert_char_int(argv[i]);
 		return (arr);
-	}	
+	}
 	return (NULL);
 }

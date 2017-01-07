@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-int		*ft_intcpy(int	*dst, int *src, size_t n)
+int		*ft_intcpy(int *dst, int *src, size_t n)
 {
 	size_t i;
 
@@ -24,7 +24,7 @@ int		*ft_intcpy(int	*dst, int *src, size_t n)
 		{
 			dst[i] = src[i];
 			i++;
-		}		
+		}
 	}
 	return (dst);
 }

@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-t_stacks	*ft_init_t_stacks(int	*arr, size_t asize)
+t_stacks	*ft_init_t_stacks(int *arr, size_t asize)
 {
 	t_stacks	*st;
 
@@ -22,7 +22,7 @@ t_stacks	*ft_init_t_stacks(int	*arr, size_t asize)
 		if ((st = (t_stacks*)malloc(sizeof(t_stacks))) == 0)
 			ft_ps_error(0, "Malloc fail\n");
 		st->arr = arr;
-		st->brr = ft_mallocint(asize);		
+		st->brr = ft_mallocint(asize);
 		st->asize = asize;
 		st->bsize = 0;
 		return (st);
@@ -30,7 +30,7 @@ t_stacks	*ft_init_t_stacks(int	*arr, size_t asize)
 	return (NULL);
 }
 
-void	ft_clean_t_stacks(t_stacks **st)
+void		ft_clean_t_stacks(t_stacks **st)
 {
 	if (st && *st)
 	{
@@ -55,13 +55,13 @@ t_result	*ft_init_t_result(size_t true_size)
 		rt->true_size = true_size;
 		rt->op_list = NULL;
 		rt->op_count = 2147483647;
-		rt->algo_index = -1;		
+		rt->algo_index = -1;
 		return (rt);
 	}
 	return (NULL);
 }
 
-void	ft_clean_t_result(t_result **rt)
+void		ft_clean_t_result(t_result **rt)
 {
 	if (rt && *rt)
 	{

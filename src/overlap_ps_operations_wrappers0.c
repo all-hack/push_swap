@@ -13,3 +13,32 @@
 #include "libft.h"
 #include "push_swap.h"
 
+char	*ft_sa(int *arr, int *brr, size_t *asize, size_t *bsize)
+{
+	ft_swap1(arr, *asize);
+	return ("sa\n");
+}
+
+char	*ft_sb(int *arr, int *brr, size_t *asize, size_t *bsize)
+{
+	ft_swap1(brr, *bsize);
+	return ("sb\n");
+}
+
+char	*ft_ss(int *arr, int *brr, size_t *asize, size_t *bsize)
+{
+	ft_swap2(arr, brr, *asize, *bsize);
+	return ("ss\n");
+}
+
+char	*ft_pa(int *arr, int *brr, size_t *asize, size_t *bsize)
+{
+	ft_push(arr, brr, asize, bsize);
+	return ("pa\n");
+}
+
+char	*ft_pb(int *arr, int *brr, size_t *asize, size_t *bsize)
+{
+	ft_push(brr, arr, bsize, asize);
+	return ("pb\n");
+}

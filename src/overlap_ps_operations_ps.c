@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-void	ft_swap1(int	*array, size_t size)
+void	ft_swap1(int *array, size_t size)
 {
 	int	tmp;
 
@@ -25,15 +25,14 @@ void	ft_swap1(int	*array, size_t size)
 	}
 }
 
-void	ft_swap2(int	*arr, int	*brr, size_t asize, size_t bsize)
+void	ft_swap2(int *arr, int *brr, size_t asize, size_t bsize)
 {
 	ft_swap1(arr, asize);
 	ft_swap1(brr, bsize);
 }
 
-void	ft_push(int	*array1, int *array2, size_t *size1, size_t *size2)
+void	ft_push(int *array1, int *array2, size_t *size1, size_t *size2)
 {
-
 	if (*size2 > 0)
 	{
 		ft_revrotate1(array1, ++(*size1));

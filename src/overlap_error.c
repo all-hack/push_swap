@@ -13,7 +13,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-void ft_ps_error(int k, char *err)
+void	ft_ps_error(int k, char *err)
 {
 	if (k < 1)
 	{

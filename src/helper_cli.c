@@ -15,19 +15,19 @@
 
 char	**ft_read_cli_args(int argc, char **argv)
 {
-	if (argc == 2)	
+	if (argc == 2)
 		argv = ft_strsplit(argv[1], ' ');
 	else
 		argv++;
 	if (argc > 1)
-		ft_ps_error(ft_check_valid_input(argv, "0123456789"), "Error\n");	
+		ft_ps_error(ft_check_valid_input(argv, "0123456789"), "Error\n");
 	else
 		exit(0);
 	return (argv);
 }
 
-char	*ft_read_stdin()
-{	
+char	*ft_read_stdin(void)
+{
 	char	buff[BUFFSIZE];
 	int		rec;
 	char	*op_list;
@@ -35,9 +35,9 @@ char	*ft_read_stdin()
 	op_list = NULL;
 	ft_bzero(buff, BUFFSIZE);
 	while ((read(0, buff, BUFFSIZE) > 0))
-	{		
+	{
 		op_list = ft_fstrmcat(op_list, buff);
 		ft_bzero(buff, BUFFSIZE);
-	}	
+	}
 	return (op_list);
 }
