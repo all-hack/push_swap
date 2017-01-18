@@ -24,20 +24,24 @@ LIBFT_PATH = libft
 FILES = ft_strsearch_ov 
 
 FILES += overlap_allocation overlap_ps_operations_rot overlap_error \
-overlap_ps_operations_ps overlap_validity overlap_struct_infa \
-overlap_ps_operations_wrappers
+overlap_ps_operations_ps overlap_validity \
 
-FILES += algo_truesort_merge algo_truesort_stackmerge
+FILES += overlap_ps_operations_wrappers0 overlap_ps_operations_wrappers1 \
+overlap_ps_operations_wrappers2
 
-FILES += algo_struct_infa algo_pushswap_control
+FILES += overlap_struct_infa algo_struct_infa t_flags_infa
+
+FILES += algo_truesort_merge 
+
+FILES += algo_pushswap_control
 
 FILES += op_conditions_set_0
 
-FILES += helper_array helper_op_list helper_cli
+FILES += helper_array helper_op_list helper_cli helper_array_lookup
 
-FILES += op_algo_0_bubble
+FILES += op_algo_0_bubble op_algo_1_stackmerge
 
-PFILES += $(FILES) push_swap
+PFILES += $(FILES) push_swap algo_truesort_stackmerge
 CFILES += $(FILES) checker
 
 

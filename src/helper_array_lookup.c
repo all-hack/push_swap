@@ -13,33 +13,64 @@
 #include "libft.h"
 #include "push_swap.h"
 
-char	*op_algo_0_bubble(t_stacks *st, t_result *rt)
+int	ft_find_big(int *arr, size_t size)
 {
-	int		i;
-	int		min;
-	size_t	min_index;
-	char	*op_list;
+	int largest;
+	int i;
+	int index;
 
-	op_list = NULL;
-	if (!ft_arr_sorted_asc(st->arr, st->asize))
+	i = 0;
+	largest = arr[i];
+	index = i;
+	while (++i < size)
 	{
-		while (st->asize > 1)
+		if (arr[i] > largest)
 		{
-			i = -1;
-			min = st->arr[0];
-			while (++i < st->asize)
-				if (st->arr[i] < min)
-					min = st->arr[i];
-			while (min != st->arr[0])
-				op_list = ft_fstrmcat(op_list, ft_ra(st->arr, st->brr,
-													&st->asize, &st->bsize));
-			op_list = ft_fstrmcat(op_list, ft_pb(st->arr, st->brr,
-													&st->asize, &st->bsize));
+			largest = arr[i];
+			index = i;
 		}
-		while (st->bsize > 0)
-			op_list = ft_fstrmcat(op_list, ft_pa(st->arr, st->brr,
-													&st->asize, &st->bsize));
-		return (op_list);
 	}
-	return (ft_strdup(""));
+	return (index);
 }
+
+int	ft_find_small(int *arr, size_t size)
+{
+	int smallest;
+	int i;
+	int index;
+
+	i = 0;
+	smallest = arr[i];
+	index = i;
+	while (++i < size)
+	{
+		if (arr[i] < smallest)
+		{
+			smallest = arr[i];
+			index = i;
+		}
+	}
+	return (index);
+}
+
+int	ft_find_value(int *arr, size_t size, int value)
+{
+	int i;
+	int index;
+
+	i = 0;
+	index = i;
+	while (i < size)
+	{
+		if (arr[i] == value)
+		{
+			return(i);
+		}
+		i++;
+	}
+	return (-1);
+}
+
+
+
+

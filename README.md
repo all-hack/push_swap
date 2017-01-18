@@ -120,7 +120,7 @@
 * helper_array.c
 	* `int	*ft_intcpy(int	*dst, int *src, size_t n)`
 		* copies `n` `int`'s from `src` into pre-allocated `dst`
-	* `int	ft_arr_sorted(int *arr, size_t size)`
+	* `int	ft_arr_sorted_asc(int *arr, size_t size)`
 		* checks to see if `arr` is sorted in ascending order
 
 * helper_cli.c

@@ -34,7 +34,7 @@ int		ft_str_search_tokens(char const *s, char **c, size_t *endex)
 	return (-1);
 }
 
-void	validate_op_list(char *op_list, char **tokens, t_stacks *st)
+size_t	validate_op_list(char *op_list, char **tokens, t_stacks *st, size_t i)
 {
 	size_t	endex;
 	char	*(*op_ins[11])(int *arr, int *brr, size_t *asize, size_t *bsize);
@@ -59,10 +59,12 @@ void	validate_op_list(char *op_list, char **tokens, t_stacks *st)
 		else
 			ft_ps_error(0, "Error\n");
 		op_list = op_list + increment + 1;
+		i++;
 	}
+	return (i);
 }
 
-void	check_and_exec_op(char *op_list, t_stacks *st)
+size_t	check_and_exec_op(char *op_list, t_stacks *st)
 {
 	char *tokens[12];
 
@@ -78,34 +80,47 @@ void	check_and_exec_op(char *op_list, t_stacks *st)
 	tokens[9] = "rrb\n";
 	tokens[10] = "rrr\n";
 	tokens[11] = 0;
-	validate_op_list(op_list, tokens, st);
+	return (validate_op_list(op_list, tokens, st, 0));
+
 }
+
 
 int		main(int argc, char **argv)
 {
 	size_t		asize;
 	size_t		true_size;
+	size_t		ops;
 	t_stacks	*st;
 	char		*op_list;
+	t_flags		*ft;
 
-	if ((argv = ft_read_cli_args(argc, argv)) == NULL)
+	
+	ft = t_flags_init();
+	if ((argv = ft_read_cli_args(argc, argv, ft, t_flags_checker_flags)) == NULL)
 		ft_ps_error(0, "Error\n");
 	st = ft_init_t_stacks(ft_cli_arguments_array(argv, &asize), asize);
 	ft_ps_error(ft_check_duplicate_int(st->arr, st->asize), "Error\n");
 	true_size = st->asize;
-	if (!ft_arr_sorted(st->arr, st->asize))
+	op_list = ft_read_stdin();
+	if (!ft_arr_sorted_asc(st->arr, st->asize))
 	{
-		op_list = ft_read_stdin();
 		if (!op_list)
 		{
 			ft_putstr("KO\n");
 			exit(0);
 		}
-		check_and_exec_op(op_list, st);
-		if (ft_arr_sorted(st->arr, true_size) && st->asize == true_size)
+		ops = check_and_exec_op(op_list, st);
+		if (ft_arr_sorted_asc(st->arr, true_size) && st->asize == true_size)
 			ft_putstr("OK\n");
 		else
 			ft_putstr("KO\n");
+		if (ft->flags[3] == 1)
+		{
+			ft_putstr("\x1b[32mnumber of instructions: ");
+			ft_putnbr(ops);			
+		}
 	}
+	else
+		ft_putstr("OK\n");
 	return (0);
 }

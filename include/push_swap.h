@@ -38,11 +38,17 @@ typedef struct	s_stacks
 typedef struct	s_algo
 {
 	int		(*algo_condition[2]) (t_stacks *st, t_result *rt, int algo_op_size);
-	char	*(*algo_op[2]) (t_stacks *st, t_result *rt);
-	char	*algo_names[1];
+	char	*(*algo_op[3]) (t_stacks *st, t_result *rt);
+	char	*algo_names[2];
 	int		algo_op_end;
 	int		algo_condition_end;
 }				t_algo;
+
+typedef	struct 	s_flags
+{
+	char		flags[6];
+	char		*valid_flags[6];
+}				t_flags;
 
 int		ft_strsearch_ov(char const *s, char const *c);
 int		*ft_intcpy(int	*dst, int *src, size_t n);
@@ -84,7 +90,7 @@ void		ft_clean_t_result(t_result **rt);
 t_algo		*ft_init_t_algo();
 void		ft_clean_t_algo(t_algo **at);
 t_result	*ft_pushswap_algo_control(t_stacks *st);
-
+char	*op_algo_1_stackmerge(t_stacks *st, t_result *rt);
 
 
 char		*ft_check_op_count(char *op_list, size_t *curr_count);
@@ -98,16 +104,21 @@ char		*op_algo_0_bubble(t_stacks *st, t_result *rt);
 int			op_condition_0_less4(t_stacks *st, t_result *rt, int algo_op_end);
 
 char		*ft_read_stdin();
-char		**ft_read_cli_args(int argc, char **argv);
+char		**ft_read_cli_args(int argc, char **argv, t_flags *ft, char **(*flag_check)(int *, char **, t_flags*));
 int			*ft_intcpy(int	*dst, int *src, size_t n);
-int			ft_arr_sorted(int *arr, size_t size);
+int			ft_arr_sorted_asc(int *arr, size_t size);
+int	ft_find_big(int *arr, size_t size);
+int	ft_find_small(int *arr, size_t size);
 
-
-
+t_flags		*t_flags_init(void);
+void		t_flags_clean(t_algo **ft);
+char	**t_flags_checker_flags(int	*argc, char **argv, t_flags *ft);
 
 int 	zyc;
 # 	define LIST(STR, ST, ARR, SIZE) zyc = 0; printf("\n"); while (ST && zyc < SIZE) {printf(STR, zyc, ARR[zyc++]);}
 # 	define LIST0(STR, ST, ARR) zyc = 0; printf("\n"); while (ST && ARR[zyc]) {printf(STR, zyc, ARR[zyc++]);}
+# 	define LIST1(STR0, STR1, STR2, ST, ARR, SIZE) zyc = 0; printf("\n%s", STR0); while (ST && zyc < SIZE) {printf(STR1, ARR[zyc++]);}printf(STR2);
+# 	define LIST2(LABEL, STR0, STR1, STR2, ST, ARR, SIZE) zyc = 0; printf("\n%s\n%s", LABEL, STR0); while (ST && zyc < SIZE) {printf(STR1, ARR[zyc++]);}printf(STR2);
 
 
 

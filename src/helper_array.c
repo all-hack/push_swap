@@ -29,7 +29,7 @@ int		*ft_intcpy(int *dst, int *src, size_t n)
 	return (dst);
 }
 
-int		ft_arr_sorted(int *arr, size_t size)
+int		ft_arr_sorted_asc(int *arr, size_t size)
 {
 	size_t	i;
 
@@ -42,3 +42,18 @@ int		ft_arr_sorted(int *arr, size_t size)
 	}
 	return (1);
 }
+
+int		ft_arr_sorted_desc(int *arr, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	if (size > 1)
+	{
+		while (i < size - 1)
+			if (arr[i] < arr[i++ + 1])
+				return (0);
+	}
+	return (1);
+}
+

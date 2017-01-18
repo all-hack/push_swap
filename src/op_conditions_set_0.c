@@ -16,7 +16,7 @@
 int		op_condition_0_less4(t_stacks *st, t_result *rt, int algo_op_end)
 {
 	if (st->asize < 4)
-		return (0);
+		return (1);
 	else
 		return (algo_op_end);
 }

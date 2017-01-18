@@ -17,18 +17,23 @@ size_t	ft_count_operations(char *op_list)
 {
 	size_t i;
 
-	i = 0;
 	if (op_list)
-		while (*op_list)
-			if (*op_list++ == '\n')
-				i++;
-	return (i);
+	{
+		i = 0;
+		if (op_list)
+			while (*op_list)
+				if (*op_list++ == '\n')
+					i++;
+		return (i);
+	}
+	return (2147483647);
 }
 
 char	*ft_check_op_count(char *op_list, size_t *curr_count)
 {
 	size_t	op_count;
 
+	
 	op_count = ft_count_operations(op_list);
 	if (op_count < *curr_count)
 	{

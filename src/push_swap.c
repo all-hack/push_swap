@@ -18,13 +18,35 @@ int	main(int argc, char **argv)
 	size_t		asize;
 	t_stacks	*st;
 	t_result	*rt;
-
-	if ((argv = ft_read_cli_args(argc, argv)) == NULL)
+	t_flags		*ft;	
+	
+	ft = t_flags_init();
+	if ((argv = ft_read_cli_args(argc, argv, ft, t_flags_checker_flags)) == NULL)
 		ft_ps_error(0, "Error\n");
 	st = ft_init_t_stacks(ft_cli_arguments_array(argv, &asize), asize);
 	ft_ps_error(ft_check_duplicate_int(st->arr, st->asize), "Error\n");
 	rt = ft_pushswap_algo_control(st);
-	ft_putstr(rt->op_list);
+	// ft_putstr(rt->op_list);	
+	
+	if (ft->flags[4] == 1)
+	{
+		asize = 0;
+		ft_putstr("\x1b[32msorted list: ");
+		while (asize < st->asize)
+		{			
+			ft_putnbr(st->arr[asize++]);
+			ft_putstr(" ");
+		}
+		ft_putstr("\n");
+	}
+
+	if (ft->flags[3] == 1)
+	{	
+		ft_putstr("\x1b[32mnumber of instructions: ");
+		ft_putnbr(rt->op_count);
+		ft_putstr("\n");
+	}
+
 	ft_clean_t_stacks(&st);
 	ft_clean_t_result(&rt);
 	return (0);

@@ -13,33 +13,32 @@
 #include "libft.h"
 #include "push_swap.h"
 
-char	*op_algo_0_bubble(t_stacks *st, t_result *rt)
+t_flags	*t_flags_init(void)
 {
-	int		i;
-	int		min;
-	size_t	min_index;
-	char	*op_list;
+	t_flags	*ft;
 
-	op_list = NULL;
-	if (!ft_arr_sorted_asc(st->arr, st->asize))
+	if ((ft = (t_flags*)malloc(sizeof(t_flags))) == 0)
+		ft_ps_error(0, "Malloc fail\n");
+	ft->valid_flags[0] = "-help";
+	ft->valid_flags[1] = "-debug";
+	ft->valid_flags[2] = "-v";
+	ft->valid_flags[3] = "-stat";
+	ft->valid_flags[4] = "-list";
+	ft->valid_flags[5] = NULL;
+	ft->flags[0] = -1;
+	ft->flags[1] = -1;
+	ft->flags[2] = -1;
+	ft->flags[3] = -1;	
+	ft->flags[4] = -1;
+	ft->flags[5] = 0;
+	return (ft);
+}
+
+void	t_flags_clean(t_algo **ft)
+{
+	if (ft && *ft)
 	{
-		while (st->asize > 1)
-		{
-			i = -1;
-			min = st->arr[0];
-			while (++i < st->asize)
-				if (st->arr[i] < min)
-					min = st->arr[i];
-			while (min != st->arr[0])
-				op_list = ft_fstrmcat(op_list, ft_ra(st->arr, st->brr,
-													&st->asize, &st->bsize));
-			op_list = ft_fstrmcat(op_list, ft_pb(st->arr, st->brr,
-													&st->asize, &st->bsize));
-		}
-		while (st->bsize > 0)
-			op_list = ft_fstrmcat(op_list, ft_pa(st->arr, st->brr,
-													&st->asize, &st->bsize));
-		return (op_list);
+		free((*ft));
+		*ft = NULL;
 	}
-	return (ft_strdup(""));
 }
