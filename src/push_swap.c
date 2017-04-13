@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 	ft = t_flags_init();
 	if ((argv = ft_read_cli_args(argc, argv, ft, t_flags_checker_flags)) == NULL)
 		ft_ps_error(0, "Error\n");
+	
 	st = ft_init_t_stacks(ft_cli_arguments_array(argv, &asize), asize);
 	ft_ps_error(ft_check_duplicate_int(st->arr, st->asize), "Error\n");
 	rt = ft_pushswap_algo_control(st);

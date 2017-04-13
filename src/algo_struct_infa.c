@@ -26,7 +26,7 @@ t_algo	*ft_init_t_algo(void)
 	at->algo_names[1] = "stack merge";
 	at->algo_condition[0] = op_condition_0_less4;
 	at->algo_condition[1] = 0;
-	at->algo_op_end = 1;
+	at->algo_op_end = 0;
 	at->algo_condition_end = 2;
 	return (at);
 }

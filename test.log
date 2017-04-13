@@ -1,0 +1,100 @@
+gcc -c src/ft_strsearch_ov.c -o build/ft_strsearch_ov.o -I ./libft/include/ -I ./include/
+gcc -c src/overlap_allocation.c -o build/overlap_allocation.o -I ./libft/include/ -I ./include/
+gcc -c src/overlap_ps_operations_rot.c -o build/overlap_ps_operations_rot.o -I ./libft/include/ -I ./include/
+gcc -c src/overlap_error.c -o build/overlap_error.o -I ./libft/include/ -I ./include/
+gcc -c src/overlap_ps_operations_ps.c -o build/overlap_ps_operations_ps.o -I ./libft/include/ -I ./include/
+gcc -c src/overlap_validity.c -o build/overlap_validity.o -I ./libft/include/ -I ./include/
+gcc -c src/overlap_ps_operations_wrappers0.c -o build/overlap_ps_operations_wrappers0.o -I ./libft/include/ -I ./include/
+gcc -c src/overlap_ps_operations_wrappers1.c -o build/overlap_ps_operations_wrappers1.o -I ./libft/include/ -I ./include/
+gcc -c src/overlap_ps_operations_wrappers2.c -o build/overlap_ps_operations_wrappers2.o -I ./libft/include/ -I ./include/
+gcc -c src/overlap_struct_infa.c -o build/overlap_struct_infa.o -I ./libft/include/ -I ./include/
+gcc -c src/algo_struct_infa.c -o build/algo_struct_infa.o -I ./libft/include/ -I ./include/
+gcc -c src/t_flags_infa.c -o build/t_flags_infa.o -I ./libft/include/ -I ./include/
+gcc -c src/algo_truesort_merge.c -o build/algo_truesort_merge.o -I ./libft/include/ -I ./include/
+gcc -c src/algo_pushswap_control.c -o build/algo_pushswap_control.o -I ./libft/include/ -I ./include/
+gcc -c src/op_conditions_set_0.c -o build/op_conditions_set_0.o -I ./libft/include/ -I ./include/
+gcc -c src/helper_array.c -o build/helper_array.o -I ./libft/include/ -I ./include/
+gcc -c src/helper_op_list.c -o build/helper_op_list.o -I ./libft/include/ -I ./include/
+gcc -c src/helper_cli.c -o build/helper_cli.o -I ./libft/include/ -I ./include/
+gcc -c src/helper_array_lookup.c -o build/helper_array_lookup.o -I ./libft/include/ -I ./include/
+gcc -c src/op_algo_0_bubble.c -o build/op_algo_0_bubble.o -I ./libft/include/ -I ./include/
+gcc -c src/op_algo_1_stackmerge.c -o build/op_algo_1_stackmerge.o -I ./libft/include/ -I ./include/
+gcc -c src/push_swap.c -o build/push_swap.o -I ./libft/include/ -I ./include/
+gcc -c src/algo_truesort_stackmerge.c -o build/algo_truesort_stackmerge.o -I ./libft/include/ -I ./include/
+compiling library....
+gcc -Wall -Werror -Wextra -o push_swap build/ft_strsearch_ov.o build/overlap_allocation.o build/overlap_ps_operations_rot.o build/overlap_error.o build/overlap_ps_operations_ps.o build/overlap_validity.o build/overlap_ps_operations_wrappers0.o build/overlap_ps_operations_wrappers1.o build/overlap_ps_operations_wrappers2.o build/overlap_struct_infa.o build/algo_struct_infa.o build/t_flags_infa.o build/algo_truesort_merge.o build/algo_pushswap_control.o build/op_conditions_set_0.o build/helper_array.o build/helper_op_list.o build/helper_cli.o build/helper_array_lookup.o build/op_algo_0_bubble.o build/op_algo_1_stackmerge.o build/push_swap.o build/algo_truesort_stackmerge.o -Llibft -lft -Ilibft
+gcc -c src/checker.c -o build/checker.o -I ./libft/include/ -I ./include/
+gcc -Wall -Werror -Wextra -o checker build/ft_strsearch_ov.o build/overlap_allocation.o build/overlap_ps_operations_rot.o build/overlap_error.o build/overlap_ps_operations_ps.o build/overlap_validity.o build/overlap_ps_operations_wrappers0.o build/overlap_ps_operations_wrappers1.o build/overlap_ps_operations_wrappers2.o build/overlap_struct_infa.o build/algo_struct_infa.o build/t_flags_infa.o build/algo_truesort_merge.o build/algo_pushswap_control.o build/op_conditions_set_0.o build/helper_array.o build/helper_op_list.o build/helper_cli.o build/helper_array_lookup.o build/op_algo_0_bubble.o build/op_algo_1_stackmerge.o build/checker.o -Llibft -lft -Ilibft
+
+[33mset 1: ./push_swap -stat -list 942 -927 799 749 665 893
+[37m
+[32msorted list: -927 665 749 799 893 942 
+[32mnumber of instructions: 21
+
+
+
+starting asc loop
+arr: -927, 799, 749, 665, 893, 
+brr: 942, 
+
+
+
+
+starting desc loop
+arr: 799, 749, 665, 893, -927, 
+brr: 942, 
+
+*high: 942
+
+
+
+exit desc loop
+arr: 749, 665, 893, -927, 
+brr: 942, 799, 
+
+
+
+
+starting desc loop
+arr: 749, 665, 893, -927, 
+brr: 942, 799, 
+
+*high: 942
+
+
+
+exit desc loop
+arr: 665, 893, -927, 
+brr: 942, 799, 749, 
+
+
+
+
+starting desc loop
+arr: 665, 893, -927, 
+brr: 942, 799, 749, 
+
+*high: 942
+
+
+
+exit desc loop
+arr: 893, -927, 
+brr: 942, 799, 749, 665, 
+
+
+
+
+starting desc loop
+arr: 893, -927, 
+brr: 942, 799, 749, 665, 
+
+*high: 942
+
+
+
+exit desc loop
+arr: -927, 
+brr: 942, 893, 799, 749, 665, 
+
+merging

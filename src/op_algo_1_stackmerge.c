@@ -55,6 +55,9 @@ char	*place_in_desc_stack(t_stacks *st, char *op_list, int *high, size_t *y)
 	lowb = st->brr[st->bsize - 1];
 	i = 1;
 	// printf("starting desc loop\n");
+	// LIST2("\n\nstarting desc loop", "arr: ", "%d, ", "", st, st->arr, st->asize)
+	// LIST1("brr: ", "%d, ", "\n\n", st, st->brr, st->bsize)
+	// printf("*high: %d\n", *high);
 	if (num >= *high)
 	{
 		*high = num;
@@ -70,11 +73,11 @@ char	*place_in_desc_stack(t_stacks *st, char *op_list, int *high, size_t *y)
 		op_list = ft_fstrmcat(op_list, ft_rb(st->arr, st->brr, &st->asize, &st->bsize));
 		while (num < st->brr[0] && st->brr[0] != *high)
 		{
+			// printf("*high: %d\n", *high);
 			// LIST2("\n\ni increasing", "arr: ", "%d, ", "", st, st->arr, st->asize)
 			// LIST1("brr: ", "%d, ", "\n\n", st, st->brr, st->bsize)
 			i++;
-			op_list = ft_fstrmcat(op_list, ft_rb(st->arr, st->brr, &st->asize, &st->bsize));
-			// printf("%d-> op_list: %s\n", (*y)++, op_list);	
+			op_list = ft_fstrmcat(op_list, ft_rb(st->arr, st->brr, &st->asize, &st->bsize));			
 			// LIST2("i2 increasing", "arr: ", "%d, ", "", st, st->arr, st->asize)
 			// LIST1("brr: ", "%d, ", "\n\n", st, st->brr, st->bsize)
 
@@ -104,12 +107,25 @@ char	*place_in_asc_stack(t_stacks *st, char *op_list, int *low, size_t *y)
 	num = st->arr[0];
 
 	// printf("starting asc loop\n");	
+	// LIST2("\n\nstarting asc loop", "arr: ", "%d, ", "", st, st->arr, st->asize)
+	// LIST1("brr: ", "%d, ", "\n\n", st, st->brr, st->bsize)
+	
+
+
 	if (num == *low)
 	{
 		return (op_list = ft_fstrmcat(op_list, ft_ra(st->arr, st->brr, &st->asize, &st->bsize)));
+	}	
+	else if (ft_find_value(st->arr, st->asize, *low) == -1 && num < *low)
+	{
+		*low = num;
+		return (op_list = ft_fstrmcat(op_list, ft_ra(st->arr, st->brr, &st->asize, &st->bsize)));
 	}
+	else if (num > st->arr[st->asize - 1])
+		return (op_list = ft_fstrmcat(op_list, ft_ra(st->arr, st->brr, &st->asize, &st->bsize)));
 	else
 		op_list = ft_fstrmcat(op_list, ft_pb(st->arr, st->brr, &st->asize, &st->bsize));		
+
 
 	// LIST2("\n\ndirty", "arr: ", "%d, ", "", st, st->arr, st->asize)
 	// LIST1("brr: ", "%d, ", "\n\n", st, st->brr, st->bsize)
@@ -130,6 +146,8 @@ char	*place_in_asc_stack(t_stacks *st, char *op_list, int *low, size_t *y)
 		i++;
 		op_list = ft_fstrmcat(op_list, ft_rra(st->arr, st->brr, &st->asize, &st->bsize));
 	}
+	if (num < st->arr[st->asize - 1] && num > st->arr[0])
+		op_list = ft_fstrmcat(op_list, ft_ra(st->arr, st->brr, &st->asize, &st->bsize));
 	// printf("i: %d\n", i);
 	op_list = ft_fstrmcat(op_list, ft_pa(st->arr, st->brr, &st->asize, &st->bsize));
 	// printf("%d-> op_list: %s\n", (*y)++, op_list);	
@@ -182,6 +200,7 @@ char	*op_algo_1_stackmerge(t_stacks *st, t_result *rt)
 		low = st->arr[0];
 
 		pivot = low + ((high - low) / 2);
+		op_list = ft_fstrmcat(op_list, ft_pb(st->arr, st->brr, &st->asize, &st->bsize));
 		// printf("%ld --> low: %d, high: %d, pivot: %d, \n", y++, low, high, pivot);
 		// op_list = ft_fstrmcat(op_list, ft_pb(st->arr, st->brr, &st->asize, &st->bsize));
 
