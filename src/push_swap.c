@@ -27,7 +27,6 @@ int	main(int argc, char **argv)
 	st = ft_init_t_stacks(ft_cli_arguments_array(argv, &asize), asize);
 	ft_ps_error(ft_check_duplicate_int(st->arr, st->asize), "Error\n");
 	rt = ft_pushswap_algo_control(st);
-	// ft_putstr(rt->op_list);	
 	
 	if (ft->flags[4] == 1)
 	{
@@ -40,15 +39,27 @@ int	main(int argc, char **argv)
 		}
 		ft_putstr("\n");
 	}
-
 	if (ft->flags[3] == 1)
 	{	
 		ft_putstr("\x1b[32mnumber of instructions: ");
 		ft_putnbr(rt->op_count);
 		ft_putstr("\n");
 	}
+	if (ft->flags[5] == 1)
+	{
+		ft_putstr("\x1b[32msorted: ");
+		if (ft_arr_sorted_asc(st->arr, st->asize))
+			ft_putstr("True");
+		else
+			ft_putstr("False");		
+		ft_putstr("\n");	
+	}	
+
+	ft_putstr(rt->op_list);
 
 	ft_clean_t_stacks(&st);
 	ft_clean_t_result(&rt);
 	return (0);
 }
+
+

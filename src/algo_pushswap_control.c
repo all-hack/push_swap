@@ -22,18 +22,25 @@ t_result	*ft_pushswap_algo_control(t_stacks *st)
 
 	rt = ft_init_t_result(st->asize);
 	at = ft_init_t_algo();
-	i = 0;
-	while (at->algo_condition[i])
+	i = -1;
+	while (at->algo_condition[++i])
 	{
-		algo_index = at->algo_condition[i++](st, rt, at->algo_op_end);
-		// printf("algo_index: %d\n", algo_index);
-		if (at->algo_op[algo_index])
-			rt->op_list =
-		ft_check_op_count(at->algo_op[algo_index](st, rt), &(rt->op_count));
+
+		algo_index = at->algo_condition[i](st, rt, at->algo_op_end);		
+		if (algo_index != at->algo_op_end)
+		{
+			if (at->algo_op[algo_index])			
+				rt->op_list =
+					ft_check_op_count(rt, at->algo_op[algo_index](st, rt), &(rt->op_count));
+			break;
+		}
+		
+		
+		// printf("op_list[%d]: \n%s\n", algo_index, rt->op_list);
 	}
 	if (!rt->op_list)
 		rt->op_list =
-			ft_check_op_count(at->algo_op[0](st, rt), &(rt->op_count));
+			ft_check_op_count(rt, at->algo_op[0](st, rt), &(rt->op_count));
 	ft_clean_t_algo(&at);
 	return (rt);
 }

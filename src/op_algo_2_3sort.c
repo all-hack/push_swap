@@ -13,32 +13,25 @@
 #include "libft.h"
 #include "push_swap.h"
 
-size_t	ft_count_operations(char *op_list)
+char	*op_algo_2_3sort(t_stacks *st, t_result *rt)
 {
-	size_t i;
+	char	*op_list;
 
-	if (op_list)
+	op_list = NULL;
+	if (st->arr[0] > st->arr[1] && st->arr[1] > st->arr[2])
 	{
-		i = 0;
-		if (op_list)
-			while (*op_list)
-				if (*op_list++ == '\n')
-					i++;
-		return (i);
+		op_list = ft_fstrmcat(op_list, ft_sa(st->arr, st->brr, &st->asize, &st->bsize));
+		op_list = ft_fstrmcat(op_list, ft_rra(st->arr, st->brr, &st->asize, &st->bsize));
 	}
-	return (2147483647);
-}
-
-char	*ft_check_op_count(t_result	*rt, char *op_list, size_t *curr_count)
-{
-	size_t	op_count;
-
-	
-	op_count = ft_count_operations(op_list);
-	if (op_count < *curr_count)
+	else if (st->arr[0] > st->arr[1] && st->arr[1] < st->arr[2] && st->arr[0] > st->arr[2])
+		op_list = ft_fstrmcat(op_list, ft_ra(st->arr, st->brr, &st->asize, &st->bsize));	
+	else if (st->arr[0] > st->arr[1] && st->arr[1] < st->arr[2] && st->arr[0] < st->arr[2])
+		op_list = ft_fstrmcat(op_list, ft_sa(st->arr, st->brr, &st->asize, &st->bsize));
+	else if (st->arr[0] < st->arr[1] && st->arr[1] > st->arr[2])
 	{
-		*curr_count = op_count;
-		return (op_list);
+		op_list = ft_fstrmcat(op_list, ft_rra(st->arr, st->brr, &st->asize, &st->bsize));
+		if (st->arr[0] > st->arr[1])
+			op_list = ft_fstrmcat(op_list, ft_sa(st->arr, st->brr, &st->asize, &st->bsize));
 	}
-	return (rt->op_list);
+	return (op_list);
 }

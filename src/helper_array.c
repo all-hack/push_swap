@@ -37,8 +37,11 @@ int		ft_arr_sorted_asc(int *arr, size_t size)
 	if (size > 1)
 	{
 		while (i < size - 1)
-			if (arr[i] > arr[i++ + 1])
+		{
+			if (arr[i] > arr[i + 1])
 				return (0);
+			i++;
+		}
 	}
 	return (1);
 }
@@ -51,8 +54,11 @@ int		ft_arr_sorted_desc(int *arr, size_t size)
 	if (size > 1)
 	{
 		while (i < size - 1)
-			if (arr[i] < arr[i++ + 1])
+		{
+			if (arr[i] < arr[i + 1])
 				return (0);
+			i++;
+		}
 	}
 	return (1);
 }

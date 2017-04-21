@@ -39,7 +39,7 @@ FILES += op_conditions_set_0
 
 FILES += helper_array helper_op_list helper_cli helper_array_lookup
 
-FILES += op_algo_0_bubble op_algo_1_stackmerge
+FILES += op_algo_0_bubble op_algo_1_pathsort op_algo_2_3sort op_algo_3_5sort
 
 PFILES += $(FILES) push_swap algo_truesort_stackmerge
 CFILES += $(FILES) checker
@@ -86,7 +86,7 @@ libft.a :
 	@$(MAKE) -C $(LIBFT_PATH) all
 
 build : 
-	@mkdir build
+	@mkdir -p build
 
 $(B_PATH)%.o : $(S_PATH)%.c
 	gcc -c $< -o $@ -I ./$(LIBFT_PATH)/$(H_PATH) -I ./$(H_PATH)

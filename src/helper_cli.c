@@ -68,7 +68,8 @@ char	**t_flags_checker_flags(int	*argc, char **argv, t_flags *ft)
 				ft_ps_error(0, "\x1b[33mUsage:\t./checker {-[flags]*} {[-0123456789*]*}\n---------------------------------------------------------\n\
 \t-help: displays usage\n\
 \t-stat: displays the number of operations run\n\
-\t-list: displays the sorted list\n");
+\t-list: displays the sorted list\n\
+\t-check: displays whether the list is sorted or not\n");
 		}
 
 		ft_ps_error(0, "\x1b[31mError\nuse -help flag for usage information\n");
@@ -102,8 +103,16 @@ char	*ft_read_stdin(void)
 
 	op_list = NULL;
 	ft_bzero(buff, BUFFSIZE);
+
 	while ((read(0, buff, BUFFSIZE) > 0))
 	{
+		if (ft_strcmp(buff, "sa\n") != 0 && ft_strcmp(buff, "sb\n") != 0 
+			&& ft_strcmp(buff, "ss\n") != 0 && ft_strcmp(buff, "pa\n") != 0 
+			&& ft_strcmp(buff, "pb\n") != 0 && ft_strcmp(buff, "ra\n") != 0 
+			&& ft_strcmp(buff, "rb\n") != 0 && ft_strcmp(buff, "rr\n") != 0 
+			&& ft_strcmp(buff, "rra\n") != 0 && ft_strcmp(buff, "rrb\n") != 0 
+			&& ft_strcmp(buff, "rrr\n") != 0)
+			ft_ps_error(0, "Error\n");
 		op_list = ft_fstrmcat(op_list, buff);
 		ft_bzero(buff, BUFFSIZE);
 	}

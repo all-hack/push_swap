@@ -24,13 +24,15 @@ t_flags	*t_flags_init(void)
 	ft->valid_flags[2] = "-v";
 	ft->valid_flags[3] = "-stat";
 	ft->valid_flags[4] = "-list";
-	ft->valid_flags[5] = NULL;
+	ft->valid_flags[5] = "-check";
+	ft->valid_flags[6] = NULL;
 	ft->flags[0] = -1;
 	ft->flags[1] = -1;
 	ft->flags[2] = -1;
 	ft->flags[3] = -1;	
 	ft->flags[4] = -1;
-	ft->flags[5] = 0;
+	ft->flags[5] = -1;
+	ft->flags[6] = 0;
 	return (ft);
 }
 

@@ -16,15 +16,23 @@
 int		op_condition_0_less4(t_stacks *st, t_result *rt, int algo_op_end)
 {
 	if (st->asize < 4)
-		return (1);
+		return (2);
 	else
 		return (algo_op_end);
 }
 
 int		op_condition_1_less6(t_stacks *st, t_result *rt, int algo_op_end)
 {
-	if (st->asize < 6)
-		return (0);
+	if (st->asize < 6 && st->asize > 3 )
+		return (3);
+	else
+		return (algo_op_end);
+}
+
+int		op_condition_2_more6(t_stacks *st, t_result *rt, int algo_op_end)
+{
+	if (st->asize >= 6)
+		return (1);
 	else
 		return (algo_op_end);
 }
